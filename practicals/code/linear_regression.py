@@ -24,7 +24,7 @@ def do_lsq_inference(X, y, beta):
     :param X: Input data matrix
     :param y: Target vector
     :param beta: Estimated coefficient vector for the linear regression
-    :return: Estimated variance of the coefficients
+    :return: Prediction for y, MSE
     """
     # y_pred
     print(f'shapes: X {X.shape}, beta {beta.shape}')
