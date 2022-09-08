@@ -22,18 +22,24 @@ def find_k_nearest_neighbors(distances, k):
     :return: indices of the k nearest neighbors
     """
     # get the indices of the k nearest neighbors
-    k_nearest_neighbors = np.argsort(distances, axis=1)[:, :k]
+    k_nearest_neighbors = np.argsort(distances, axis=0)[:k, :]
     return k_nearest_neighbors
 
 
-def predict_topk(k_nearest_neighbors, labels):
+def predict_topk(k_nearest_neighbors, labels, regression=False):
     """
+    Calculate label predictions based on the k nearest neighbors
     :param k_nearest_neighbors: indices of the k nearest neighbors
     :param labels: labels of the training data
     :return: predicted labels
     """
     # get the labels of the k nearest neighbors
     k_nearest_labels = labels[k_nearest_neighbors]
+
     # get the most common label
-    predicted_labels = stats.mode(k_nearest_labels, axis=1)[0]
-    return predicted_labels
+    if regression:
+        y_pred = np.mean(k_nearest_labels, axis=0)
+    else:
+        y_pred = stats.mode(k_nearest_labels, axis=0)[0][0]
+
+    return y_pred
