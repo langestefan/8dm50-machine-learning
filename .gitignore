@@ -347,3 +347,7 @@ TSWLatexianTemp*
 *.spl
 
 *.DS_Store
+
+# data
+practicals/data/week5/test
+practicals/data/week5/training
