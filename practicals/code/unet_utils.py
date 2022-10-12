@@ -5,7 +5,6 @@ import gryds
 import time
 import matplotlib.pyplot as plt
 
-
 def load_data(impaths_all, test=False):
     """
     Load data with corresponding masks and segmentations
